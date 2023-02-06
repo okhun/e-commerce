@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { useGet } from "../api/fetch";
+import { useGet } from "@/api/fetch";
 
 interface Product {
   brand: string;

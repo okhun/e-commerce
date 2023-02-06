@@ -2,12 +2,13 @@ import { useField, useForm } from "vee-validate";
 import { type InferType, object, string } from "yup";
 import { useAuthStore } from "@/store/auth";
 
-export const useLogin = () => {
+export const useRegister = () => {
   const store = useAuthStore();
-  const { login } = store;
+  const { register } = store;
   const errorMessage = "Field is requied";
 
   const formSchema = object({
+    name: string().required(errorMessage),
     username: string().required(errorMessage),
     password: string().min(6, errorMessage).required(errorMessage),
   });
@@ -15,14 +16,16 @@ export const useLogin = () => {
 
   const { handleSubmit } = useForm<FormType>({
     validationSchema: formSchema,
-    initialValues: { username: "", password: "" },
+    initialValues: { name: "", username: "", password: "" },
   });
+
+  const name = useField<FormType["name"]>("name");
   const username = useField<FormType["username"]>("username");
   const password = useField<FormType["password"]>("password");
 
   const handleFormSubmit = handleSubmit((values) => {
-    login(values);
+    register(values);
   });
 
-  return { username, password, handleFormSubmit };
+  return { username, password, name, handleFormSubmit };
 };

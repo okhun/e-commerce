@@ -37,7 +37,7 @@ const inputClass = computed(() => {
 <template>
   <div class="relative w-full">
     <p>{{ label }}</p>
-    <input
+    <textarea
       class="w-full border focus:outline-none py-4 pl-4 pr-10 rounded-2xl focus:outline-2 focus:ring-2 focus:ring-offset-none"
       :class="[inputClass]"
       :type="type"

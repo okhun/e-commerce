@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useAuthStore } from "./../store/auth";
-import BaseButton from "./BaseButton.vue";
+import { useAuthStore } from "@/store/auth";
+import BaseButton from "@/components/BaseButton.vue";
 
 const store = useAuthStore();
 const { isAuthenticated } = storeToRefs(store);
@@ -9,7 +9,7 @@ const { logout } = store;
 </script>
 
 <template>
-  <div class="sticky top-0 z-header bg-white">
+  <div class="sticky top-0 z-50 bg-white">
     <div
       class="flex justify-between items-center border-b border-dark-lighter p-3 md:p-4 lg:px-6"
     >

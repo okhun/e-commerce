@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import icons from "./../utils/icons";
+import icons from "@/utils/icons";
 const props = defineProps<{
   name: keyof typeof icons;
   viewBox?: string;

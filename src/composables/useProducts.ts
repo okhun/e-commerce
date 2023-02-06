@@ -1,6 +1,6 @@
 import { storeToRefs } from "pinia";
 import { onMounted, onUnmounted, ref, watch } from "vue";
-import { useProductStore } from "./../store/product";
+import { useProductStore } from "@/store/product";
 
 export const useProducts = () => {
   const store = useProductStore();

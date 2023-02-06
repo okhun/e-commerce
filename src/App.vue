@@ -9,7 +9,7 @@ const layout = computed(() => {
   if (typeof metaLayout === "string") {
     return metaLayout.charAt(0).toUpperCase() + metaLayout.slice(1) + "Layout";
   } else {
-    return "DefaultLayout";
+    return "EmptyLayout";
   }
 });
 </script>

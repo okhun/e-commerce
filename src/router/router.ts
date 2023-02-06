@@ -5,7 +5,7 @@ import {
   createRouter,
   createWebHistory,
 } from "vue-router";
-import { useAuthStore } from "../store/auth";
+import { useAuthStore } from "@/store/auth";
 
 const routes: readonly RouteRecordRaw[] = [
   {
@@ -14,7 +14,7 @@ const routes: readonly RouteRecordRaw[] = [
     meta: {
       layout: "default",
     },
-    component: () => import("./../views/products.vue"),
+    component: () => import("@/views/products.vue"),
   },
   {
     path: "/auth/login",
@@ -22,7 +22,7 @@ const routes: readonly RouteRecordRaw[] = [
     meta: {
       layout: "empty",
     },
-    component: () => import("./../views/login.vue"),
+    component: () => import("@/views/login.vue"),
   },
   {
     path: "/auth/register",
@@ -30,7 +30,7 @@ const routes: readonly RouteRecordRaw[] = [
     meta: {
       layout: "empty",
     },
-    component: () => import("./../views/register.vue"),
+    component: () => import("@/views/register.vue"),
   },
   {
     path: "/products/show/:id",
@@ -38,7 +38,7 @@ const routes: readonly RouteRecordRaw[] = [
     meta: {
       layout: "default",
     },
-    component: () => import("./../views/show.vue"),
+    component: () => import("@/views/show.vue"),
   },
   {
     path: "/:catchAll(.*)",
@@ -46,20 +46,13 @@ const routes: readonly RouteRecordRaw[] = [
     meta: {
       layout: "empty",
     },
-    component: () => import("./../views/error.vue"),
+    component: () => import("@/views/error.vue"),
   },
 ];
 
 export const router: Router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior(_to, _from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { top: 0 };
-    }
-  },
 });
 
 export default router;

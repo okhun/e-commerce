@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useProducts } from "./../composables/useProducts";
+import ProductCard from "@/components/ProductCard.vue";
+import { useProducts } from "@/composables/useProducts";
 
 const { products, isLoading, total, activePage, filter, handlePagination } =
   useProducts();
@@ -24,35 +25,28 @@ const { products, isLoading, total, activePage, filter, handlePagination } =
           <router-link
             :to="{ name: 'product_show', params: { id: product.id } }"
           >
-            <div class="border bg-white hover:shadow-lg rounded">
-              <img
-                v-if="product.thumbnail"
-                :src="product.thumbnail"
-                :alt="product.title"
-                class="w-full max-h-80"
-              />
-              <div class="p-4">
-                <p>Brand: {{ product.brand }}</p>
-                <p>{{ product?.description }}</p>
-              </div>
-            </div>
+            <ProductCard :product="product" />
           </router-link>
         </template>
       </div>
       <div v-else class="flex justify-center">
         <p>Products list are empty</p>
       </div>
+      <div class="flex justify-end mt-10">
+        <div class="flex gap-2">
+          <button
+            v-for="page in Math.ceil(total / 12)"
+            class="w-10 h-10 border rounded flex justify-center items-center"
+            :class="[
+              page === activePage ? 'bg-blue-900 text-white' : 'bg-white',
+            ]"
+            @click="handlePagination(page)"
+          >
+            <p>{{ page }}</p>
+          </button>
+        </div>
+      </div>
     </template>
     <div v-else class="flex justify-center">Loading...</div>
-    <div class="flex gap-2 my-10">
-      <button
-        v-for="page in Math.ceil(total / 12)"
-        class="w-10 h-10 border rounded flex justify-center items-center"
-        :class="[page === activePage ? 'bg-blue-900 text-white' : 'bg-white']"
-        @click="handlePagination(page)"
-      >
-        <p>{{ page }}</p>
-      </button>
-    </div>
   </div>
 </template>

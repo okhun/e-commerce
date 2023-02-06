@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import BaseInput from "../components/BaseInput.vue";
-import BaseButton from "../components/BaseButton.vue";
-import { useLogin } from "./../composables/useLogin";
+import BaseInput from "@/components/BaseInput.vue";
+import BaseButton from "@/components/BaseButton.vue";
+import { useLogin } from "@/composables/useLogin";
 
 const { username, password, handleFormSubmit } = useLogin();
 </script>
