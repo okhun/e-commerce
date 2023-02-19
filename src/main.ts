@@ -13,6 +13,6 @@ pinia.use(({ store }) => {
 export const app = createApp(App);
 
 app.use(layouts);
-app.use(router);
 app.use(pinia);
+app.use(router);
 app.mount("#app");

@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { createUUID, getItem, setItem } from "@/utils/functions";
+import router from "@/router/router";
 
 interface User {
   id: string;
@@ -37,7 +38,8 @@ export const useAuthStore = defineStore("authentication", {
           this.user = user;
           setItem("Authorization", token);
           setItem("user", JSON.stringify(user));
-          this.router.push({ name: "home" });
+          // this.router.push({ name: "home" });
+          router.push({ name: "home" });
         }
       }
     },
@@ -58,7 +60,7 @@ export const useAuthStore = defineStore("authentication", {
       } else {
         setItem("users", JSON.stringify([tempData]));
       }
-      this.router.push({ name: "login" });
+      router.push({ name: "login" });
     },
   },
 });
